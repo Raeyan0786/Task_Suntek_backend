@@ -1,0 +1,12 @@
+import express from 'express';
+import { authMiddleware } from '../../middlewares/authMiddleware';
+import { getTasks, createTask, updateTask, deleteTask } from '../../controllers/tasksController';
+import validator from "./validator";
+import { validateRequest } from '../../middlewares/validateRequest';
+const router = express.Router();
+router.use(authMiddleware);
+router.get('/', getTasks);
+router.post('/',validator.taskValidation,validateRequest, createTask);
+router.put('/:id',validator.taskValidation,validateRequest, updateTask);
+router.delete('/:id', deleteTask);
+export default router;

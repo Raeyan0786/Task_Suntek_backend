@@ -50,6 +50,13 @@ export const getTasks = async (req: Request, res: Response) => {
   }
 }
 
+
+// export const getTasks = async (req: Request, res: Response) => {
+//   const userId = (req as any).user.id;
+//   const tasks = await Task.find({ userId });
+//   res.json(tasks);
+// };
+
 export const createTask = async (req: Request, res: Response) => {
   const userId = (req as any).user.id;
   const { title, description } = req.body;

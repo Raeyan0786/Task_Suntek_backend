@@ -47,3 +47,25 @@ export const registerTimerSocket = (io: Server) => {
   });
 };
 
+// import { Server } from 'socket.io';
+// import jwt from 'jsonwebtoken';
+
+// export const registerTimerSocket = (io: Server) => {
+//   io.use((socket, next) => {
+//     const token = socket.handshake.auth?.token;
+//     if (!token) return next(new Error('Unauthorized'));
+//     try {
+//       const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as any;
+//       (socket as any).userId = decoded.id;
+//       next();
+//     } catch {
+//       next(new Error('Unauthorized'));
+//     }
+//   });
+
+//   io.on('connection', (socket) => {
+//     const userId = (socket as any).userId;
+//     socket.join(`user:${userId}`);
+//     socket.on('disconnect', () => {});
+//   });
+// };
