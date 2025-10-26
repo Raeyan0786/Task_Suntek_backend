@@ -14,12 +14,6 @@ dotenv.config();
 const app = express();
 const server = createServer(app);
 
-app.use(cors({
-  origin: "https://suntek-backend.onrender.com",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-}));
-
 const io = new Server(server, {
   cors: {
     origin: "https://suntek-backend.onrender.com",
@@ -28,6 +22,9 @@ const io = new Server(server, {
   },
   transports: ['websocket', 'polling'],
 });
+
+app.use(cors());
+
 app.use(express.json());
 
 app.set('io', io);
